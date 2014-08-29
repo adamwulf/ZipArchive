@@ -14,8 +14,8 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "C9C36EF6160AC3C0005BED39"
-               BuildableName = "ZipArchive"
+               BlueprintIdentifier = "66EDE46119B1034600A5623B"
+               BuildableName = "ZipArchive.framework"
                BlueprintName = "ZipArchive"
                ReferencedContainer = "container:ZipArchive.xcodeproj">
             </BuildableReference>
@@ -39,6 +39,15 @@
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       allowLocationSimulation = "YES">
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "66EDE46119B1034600A5623B"
+            BuildableName = "ZipArchive.framework"
+            BlueprintName = "ZipArchive"
+            ReferencedContainer = "container:ZipArchive.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
