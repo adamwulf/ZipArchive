@@ -439,7 +439,7 @@
  * @returns NSArray list of filenames in the zip archive. 
  */
 
--(NSArray*) getZipFileContents     // list the contents of the zip archive. must be called after UnzipOpenFile
+-(NSArray*) contentsOfZipFile     // list the contents of the zip archive. must be called after UnzipOpenFile
 {
     int ret = unzGoToFirstFile( _unzFile );
     NSMutableArray * allFilenames = [NSMutableArray arrayWithCapacity:40];
