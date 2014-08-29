@@ -53,11 +53,11 @@ const NSUInteger NUM_FILES = 10;
     NSUInteger count = 0;
     NSFileManager* fm = [NSFileManager defaultManager];
     ZipArchive* zip = [[ZipArchive alloc] init];
-    [zip UnzipOpenFile:_zipFile1];
+    [zip unzipOpenFile:_zipFile1];
     NSArray* contents = [zip getZipFileContents];
     XCTAssertTrue(contents && contents.count == _files.count, @"zip files has right number of contents");
     NSString* outputDir = [self tempDir];
-    [zip UnzipFileTo:outputDir overWrite:YES];
+    [zip unzipFileTo:outputDir overWrite:YES];
     
     NSDirectoryEnumerator* dirEnum = [fm enumeratorAtPath:outputDir];
     NSString* file;
@@ -77,13 +77,13 @@ const NSUInteger NUM_FILES = 10;
     NSUInteger count = 0;
     NSFileManager* fm = [NSFileManager defaultManager];
     ZipArchive* zip = [[ZipArchive alloc] init];
-    [zip UnzipOpenFile:_zipFile2 Password:@"password"];
+    [zip unzipOpenFile:_zipFile2 withPassword:@"password"];
     NSArray* contents = [zip getZipFileContents];
     XCTAssertTrue(contents && contents.count == _files.count, @"zip files has right number of contents");
     NSString* outputDir = [self tempDir];
     _errorCount = 0;
     zip.delegate = self;
-    BOOL ok = [zip UnzipFileTo:outputDir overWrite:YES];
+    BOOL ok = [zip unzipFileTo:outputDir overWrite:YES];
     XCTAssertTrue(ok, @"unzip should pass with wrong password");
     XCTAssertTrue(_errorCount == 0, @"no errors");
     NSDirectoryEnumerator* dirEnum = [fm enumeratorAtPath:outputDir];
@@ -104,13 +104,13 @@ const NSUInteger NUM_FILES = 10;
     NSUInteger count = 0;
     NSFileManager* fm = [NSFileManager defaultManager];
     ZipArchive* zip = [[ZipArchive alloc] init];
-    [zip UnzipOpenFile:_zipFile2 Password:@"wrong"];
+    [zip unzipOpenFile:_zipFile2 withPassword:@"wrong"];
     NSArray* contents = [zip getZipFileContents];
     XCTAssertTrue(contents && contents.count == _files.count, @"zip files has right number of contents");
     NSString* outputDir = [self tempDir];
     _errorCount = 0;
     zip.delegate = self;
-    BOOL ok = [zip UnzipFileTo:outputDir overWrite:YES];
+    BOOL ok = [zip unzipFileTo:outputDir overWrite:YES];
     XCTAssertTrue(_errorCount == 1, @"we want the wrong password error reported only once");
     XCTAssertFalse(ok, @"unzip should fail with wrong password");
     
@@ -181,16 +181,16 @@ const NSUInteger NUM_FILES = 10;
     BOOL ok;
     NSString* zipPath = [NSString stringWithFormat:@"%s.zip", tempName];
     if (password && password.length > 0) {
-        ok = [zip CreateZipFile2:zipPath Password:password];
+        ok = [zip createZipFileAt:zipPath withPassword:password];
     } else {
-        ok = [zip CreateZipFile2:zipPath];
+        ok = [zip createZipFileAt:zipPath];
     }
     XCTAssertTrue(ok, @"created zip file");
     for (NSString* file in files) {
-        ok = [zip addFileToZip:file newname:[file lastPathComponent]];
+        ok = [zip addFileToZip:file toPathInZip:[file lastPathComponent]];
         XCTAssertTrue(ok, @"added file to zip archive");
     }
-    ok = [zip CloseZipFile2];
+    ok = [zip closeZipFile];
     XCTAssertTrue(ok, @"closed zip file");
     return zipPath;
 }
@@ -212,16 +212,16 @@ const NSUInteger NUM_FILES = 10;
         [fileManager removeItemAtPath:theZippedFilePath error:nil];
     }
     
-    [theZip CreateZipFile2:theZippedFilePath Password:@"password"];
+    [theZip createZipFileAt:theZippedFilePath withPassword:@"password"];
     
     NSString* path = [[NSBundle bundleForClass:[self class]] bundlePath];
     NSArray* testFiles = @[@"V3.png", @"V3.xml"];
     for (NSString *fileName in testFiles) {
         NSString* theFilePath = [path stringByAppendingPathComponent:fileName];
-        [theZip addFileToZip:theFilePath newname:[theFilePath lastPathComponent]];
+        [theZip addFileToZip:theFilePath toPathInZip:[theFilePath lastPathComponent]];
     }
     
-    [theZip CloseZipFile2];
+    [theZip closeZipFile];
     NSLog(@"Zip file created at: %@", theZippedFilePath);
 }
 

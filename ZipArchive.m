@@ -57,8 +57,8 @@
 -(void) dealloc
 {
     // close any open file operations
-	[self CloseZipFile2];
-    [self UnzipCloseFile];
+	[self closeZipFile];
+    [self unzipCloseFile];
     
     // release retained/copied properties.
     [_password release];
@@ -75,7 +75,7 @@
  * @returns BOOL YES on success
  */
 
--(BOOL) CreateZipFile2:(NSString*) zipFile
+-(BOOL) createZipFileAt:(NSString*) zipFile
 {
 	_zipFile = zipOpen( (const char*)[zipFile UTF8String], 0 );
 	if( !_zipFile ) 
@@ -91,10 +91,10 @@
  * @returns BOOL YES on success
  */
 
--(BOOL) CreateZipFile2:(NSString*) zipFile Password:(NSString*) password
+-(BOOL) createZipFileAt:(NSString*) zipFile withPassword:(NSString*) password
 {
 	self.password = password;
-	return [self CreateZipFile2:zipFile];
+	return [self createZipFileAt:zipFile];
 }
 
 /**
@@ -105,7 +105,7 @@
  * @returns BOOL YES on success
  */
 
--(BOOL) addFileToZip:(NSString*) file newname:(NSString*) newname;
+-(BOOL) addFileToZip:(NSString*) file toPathInZip:(NSString*) newname;
 {
 	if( !_zipFile )
 		return NO;
@@ -196,7 +196,7 @@
  * @returns BOOL YES on success
  */
 
--(BOOL) CloseZipFile2
+-(BOOL) closeZipFile
 {
 	self.password = nil;
 	if( _zipFile==NULL )
@@ -213,7 +213,7 @@
  * @returns BOOL YES on success
  */
 
--(BOOL) UnzipOpenFile:(NSString*) zipFile
+-(BOOL) unzipOpenFile:(NSString*) zipFile
 {
     // create an array to receive the list of unzipped files.
     if (_unzippedFiles) [_unzippedFiles release];
@@ -240,10 +240,10 @@
  * @returns BOOL YES on success
  */
 
--(BOOL) UnzipOpenFile:(NSString*) zipFile Password:(NSString*) password
+-(BOOL) unzipOpenFile:(NSString*) zipFile withPassword:(NSString*) password
 {
 	self.password = password;
-	return [self UnzipOpenFile:zipFile];
+	return [self unzipOpenFile:zipFile];
 }
 
 /**
@@ -260,7 +260,7 @@
  * @returns BOOL YES on success
  */
 
--(BOOL) UnzipFileTo:(NSString*) path overWrite:(BOOL) overwrite
+-(BOOL) unzipFileTo:(NSString*) path overWrite:(BOOL) overwrite
 {
 	BOOL success = YES;
     int index = 0;
@@ -420,7 +420,7 @@
  * @returns BOOL YES on success
  */
 
--(BOOL) UnzipCloseFile
+-(BOOL) unzipCloseFile
 {
 	self.password = nil;
 	if( _unzFile ) {

@@ -94,15 +94,15 @@ typedef void(^ZipArchiveProgressUpdateBlock)(int percentage, int filesProcessed,
 
 -(id) initWithFileManager:(NSFileManager*) fileManager;
 
--(BOOL) CreateZipFile2:(NSString*) zipFile;
--(BOOL) CreateZipFile2:(NSString*) zipFile Password:(NSString*) password;
--(BOOL) addFileToZip:(NSString*) file newname:(NSString*) newname;
--(BOOL) CloseZipFile2;
+-(BOOL) createZipFileAt:(NSString*) zipFile;
+-(BOOL) createZipFileAt:(NSString*) zipFile withPassword:(NSString*) password;
+-(BOOL) addFileToZip:(NSString*) file toPathInZip:(NSString*) newname;
+-(BOOL) closeZipFile;
 
--(BOOL) UnzipOpenFile:(NSString*) zipFile;
--(BOOL) UnzipOpenFile:(NSString*) zipFile Password:(NSString*) password;
--(BOOL) UnzipFileTo:(NSString*) path overWrite:(BOOL) overwrite;
--(BOOL) UnzipCloseFile;
+-(BOOL) unzipOpenFile:(NSString*) zipFile;
+-(BOOL) unzipOpenFile:(NSString*) zipFile withPassword:(NSString*) password;
+-(BOOL) unzipFileTo:(NSString*) path overWrite:(BOOL) overwrite;
+-(BOOL) unzipCloseFile;
 -(NSArray*) getZipFileContents;     // list the contents of the zip archive. must be called after UnzipOpenFile
 
 @end
