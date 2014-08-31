@@ -68,6 +68,19 @@
 	[super dealloc];
 }
 
+-(BOOL) validateZipFileAt:(NSString*)zipFile{
+    if([self unzipOpenFile:zipFile]){
+        NSArray* contents = [self contentsOfZipFile];
+        [self unzipCloseFile];
+        if([contents count]){
+            NSLog(@"valid zip file");
+            return YES;
+        }
+    }
+    NSLog(@"invalid zip file");
+    return NO;
+}
+
 /**
  * Create a new zip file at the specified path, ready for new files to be added.
  *

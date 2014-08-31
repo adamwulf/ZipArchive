@@ -94,6 +94,8 @@ typedef void(^ZipArchiveProgressUpdateBlock)(int percentage, int filesProcessed,
 
 -(id) initWithFileManager:(NSFileManager*) fileManager;
 
+-(BOOL) validateZipFileAt:(NSString*)zipFile;
+
 -(BOOL) createZipFileAt:(NSString*) zipFile;
 -(BOOL) createZipFileAt:(NSString*) zipFile withPassword:(NSString*) password;
 -(BOOL) addFileToZip:(NSString*) file toPathInZip:(NSString*) newname;
