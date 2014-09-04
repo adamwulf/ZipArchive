@@ -718,7 +718,6 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = "";
-				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
 			};
 			name = Debug;
@@ -1048,6 +1047,7 @@
 				66EDE47119B1034600A5623B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C908A96C160AC26D000395DB /* Build configuration list for PBXNativeTarget "ZipArchive mac" */ = {
 			isa = XCConfigurationList;
