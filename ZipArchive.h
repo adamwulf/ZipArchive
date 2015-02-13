@@ -10,7 +10,7 @@
 */
 
 
-
+#import <Foundation/Foundation.h>
 
 /**
  a block that is called from UnzipFileTo:overwrite:withProgressBlock: where the percentage of
