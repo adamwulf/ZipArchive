@@ -494,7 +494,7 @@
 		0867D690FE84028FC02AAC07 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0610;
+				LastUpgradeCheck = 0620;
 				TargetAttributes = {
 					66AFAD5C1A8DE55600FD0263 = {
 						CreatedOnToolsVersion = 6.1.1;
@@ -1074,6 +1074,7 @@
 				66AFAD6C1A8DE55600FD0263 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C908A96C160AC26D000395DB /* Build configuration list for PBXNativeTarget "ZipArchive mac" */ = {
 			isa = XCConfigurationList;

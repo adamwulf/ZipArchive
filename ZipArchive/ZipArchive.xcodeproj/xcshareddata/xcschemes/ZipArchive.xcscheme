@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0630"
+   LastUpgradeVersion = "0620"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "66EDE46119B1034600A5623B"
+               BlueprintIdentifier = "66AFAD5C1A8DE55600FD0263"
                BuildableName = "ZipArchive.framework"
                BlueprintName = "ZipArchive"
                ReferencedContainer = "container:ZipArchive.xcodeproj">
@@ -42,7 +42,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "66EDE46119B1034600A5623B"
+            BlueprintIdentifier = "66AFAD5C1A8DE55600FD0263"
             BuildableName = "ZipArchive.framework"
             BlueprintName = "ZipArchive"
             ReferencedContainer = "container:ZipArchive.xcodeproj">
